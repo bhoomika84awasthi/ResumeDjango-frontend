@@ -20,6 +20,8 @@ function Login({ onLoginSuccess }) {
     return input;
   };
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -27,8 +29,8 @@ function Login({ onLoginSuccess }) {
     setLoading(true);
 
     const url = mode === 'login'
-      ? 'http://localhost:8000/api-token-auth/'
-      : 'http://localhost:8000/api/register/';
+      ? `${API_BASE_URL}/api-token-auth/`
+      : `${API_BASE_URL}/api/register/`;
 
     let payload;
     if (mode === 'login') {
